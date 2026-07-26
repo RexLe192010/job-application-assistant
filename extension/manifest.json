@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Job Apply Assistant",
+  "version": "0.1.0",
+  "description": "Detect and fill job application forms using a local knowledge base.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "alarms",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ],
+      "js": [
+        "src/shared/fieldSchema.js",
+        "src/shared/storage.js",
+        "src/content/fieldDetector.js",
+        "src/content/fieldFiller.js",
+        "src/content/fieldWatcher.js",
+        "src/content/index.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html"
+  },
+  "options_page": "src/options/options.html"
+}

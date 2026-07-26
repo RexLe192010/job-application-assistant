@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Apply Assistant</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="panel">
+      <h1>Job Apply Assistant</h1>
+      <p id="status">Ready.</p>
+
+      <section class="stats">
+        <p>Knowledge fields: <span id="kbCount">0</span></p>
+        <p>Observed fields: <span id="observedCount">0</span></p>
+        <p>Fill logs: <span id="fillLogCount">0</span></p>
+      </section>
+
+      <div class="actions">
+        <button id="detectBtn" type="button">Detect Fields</button>
+        <button id="fillBtn" type="button">Autofill This Page</button>
+        <button id="optionsBtn" type="button">Open Knowledge Base</button>
+      </div>
+    </main>
+
+    <script src="../shared/storage.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
