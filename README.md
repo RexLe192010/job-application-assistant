@@ -1,6 +1,14 @@
 # Job Application Assistant
 
-Phase 1 focuses on a Chrome extension that detects and fills job application forms using a local knowledge base.
+Phase 1 focuses on a Chrome extension that detects and fills job application forms using a local knowledge base and an OmniRoute AI gateway.
+
+The current flow is:
+
+1. Upload a resume in the options page.
+2. Extract structured fields and resume chunks.
+3. Prefill the knowledge base from the resume.
+4. Let the user edit and save the final values.
+5. Use OmniRoute to route AI requests to free or low-cost models first.
 
 ## Structure
 
@@ -21,6 +29,9 @@ Phase 1 focuses on a Chrome extension that detects and fills job application for
 ## Current MVP Scope
 
 - Local storage based knowledge base
+- Resume upload with structured field prefill
+- Resume chunk storage for later retrieval and answer generation
+- OmniRoute gateway settings with dynamic model routing
 - Semantic field detection (`label/name/placeholder`)
 - Autofill with synthetic DOM events (`input/change/blur`)
 - User input watcher with feedback loop

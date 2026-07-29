@@ -3,6 +3,9 @@
   const kbCountEl = document.getElementById("kbCount");
   const observedCountEl = document.getElementById("observedCount");
   const fillLogCountEl = document.getElementById("fillLogCount");
+  const resumeUploadedEl = document.getElementById("resumeUploaded");
+  const resumeChunkCountEl = document.getElementById("resumeChunkCount");
+  const aiEnabledEl = document.getElementById("aiEnabled");
   const detectBtn = document.getElementById("detectBtn");
   const fillBtn = document.getElementById("fillBtn");
   const optionsBtn = document.getElementById("optionsBtn");
@@ -34,6 +37,9 @@
     kbCountEl.textContent = String(stats.populatedFields);
     observedCountEl.textContent = String(stats.observedCount);
     fillLogCountEl.textContent = String(stats.fillLogCount);
+    resumeUploadedEl.textContent = stats.resumeUploaded ? "yes" : "no";
+    resumeChunkCountEl.textContent = String(stats.resumeChunkCount);
+    aiEnabledEl.textContent = stats.aiEnabled ? "yes" : "no";
   }
 
   detectBtn.addEventListener("click", async () => {
