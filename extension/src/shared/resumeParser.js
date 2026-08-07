@@ -1,4 +1,4 @@
-(function initResumeParser(global) {
+ (function initResumeParser(global) {
   const namespace = global.JobApplyAssistant || (global.JobApplyAssistant = {});
 
   const EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
@@ -144,38 +144,36 @@
     return file.text();
   }
 
-  async function buildResumePackage(file) {
-    const rawText = await readFileText(file);
-    const sourceText = normalizeText(rawText);
-    const structuredFields = extractStructuredFields(sourceText, file.name);
-    const resumeChunks = splitIntoChunks(sourceText);
-    const summary = resumeChunks
-      .slice(0, 3)
-      .map((chunk) => `${chunk.section}: ${chunk.text.slice(0, 240)}`)
-      .join("\n\n");
-
-    return {
-      sourceFile: {
-        name: file.name,
-        size: file.size,
-        type: file.type,
-        lastModified: file.lastModified
-      },
-      sourceText,
-      structuredFields,
-      resumeChunks,
-      summary,
-      warnings: sourceText ? [] : ["Resume text could not be extracted cleanly from the uploaded file."],
-      extractedAt: new Date().toISOString(),
-      importedAt: null
-    };
-  }
-
   namespace.resumeParser = {
     normalizeText,
     collectLines,
     extractStructuredFields,
     splitIntoChunks,
-    buildResumePackage
+    buildResumePackage: async function buildResumePackage(file) {
+      const rawText = await readFileText(file);
+      const sourceText = normalizeText(rawText);
+      const structuredFields = extractStructuredFields(sourceText, file.name);
+      const resumeChunks = splitIntoChunks(sourceText);
+      const summary = resumeChunks
+        .slice(0, 3)
+        .map((chunk) => `${chunk.section}: ${chunk.text.slice(0, 240)}`)
+        .join("\n\n");
+
+      return {
+        sourceFile: {
+          name: file.name,
+          size: file.size,
+          type: file.type,
+          lastModified: file.lastModified
+        },
+        sourceText,
+        structuredFields,
+        resumeChunks,
+        summary,
+        warnings: sourceText ? [] : ["Resume text could not be extracted cleanly from the uploaded file."],
+        extractedAt: new Date().toISOString(),
+        importedAt: null
+      };
+    }
   };
 })(typeof window !== "undefined" ? window : globalThis);
