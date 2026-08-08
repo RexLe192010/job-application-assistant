@@ -132,9 +132,20 @@
 
       <section>
         <h2>Resume Import</h2>
+        <div style="margin-bottom:10px">
+          <button id="openProfileEditorBtn" type="button">Open Profile Editor</button>
+        </div>
         <div class="row">
           <label for="resumeFile">Upload Resume</label>
           <input id="resumeFile" type="file" accept=".txt,.md,.html,.htm,.pdf,.docx,.rtf,.json,.xml,*/*" />
+        </div>
+        <div class="row">
+          <label for="parsedFile">Load Parsed JSON</label>
+          <input id="parsedFile" type="file" accept=".json" />
+        </div>
+        <div class="inline-actions">
+          <button id="loadParsedBtn" type="button">Preview Parsed JSON</button>
+          <button id="importParsedBtn" type="button">Import Parsed JSON to Profile</button>
         </div>
         <div class="inline-actions">
           <button id="analyzeResumeBtn" type="button">Analyze and Prefill</button>
@@ -143,6 +154,11 @@
         <p class="small">Best results currently come from text-based resumes. Binary formats are accepted, but extraction quality depends on how much text is recoverable in the browser.</p>
         <div id="resumeStatus" class="small">No resume uploaded yet.</div>
         <div id="resumePreview" class="preview"></div>
+        <div id="parsedJsonPreview" class="preview">
+          <div class="preview-item"><strong>Parsed JSON Preview</strong>
+            <pre id="parsedJsonText" style="white-space:pre-wrap;max-height:360px;overflow:auto;margin-top:8px"></pre>
+          </div>
+        </div>
       </section>
 
       <section>

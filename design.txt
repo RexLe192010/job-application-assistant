@@ -1,0 +1,18 @@
+                Upload CV
+                    ↓
+                 pdf.js
+                    ↓
+                raw text
+                    ↓
+                  LLM
+                    ↓
+             Parsed CV JSON
+                    ↓
+        ┌───────────┴───────────┐
+        ↓                       ↓
+ Structured View            Raw JSON
+    (default)               (read-only)
+        ↓
+  Edit / Review
+        ↓
+ Import to Profile

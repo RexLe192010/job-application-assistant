@@ -141,7 +141,70 @@
       throw new Error("Resume file is required");
     }
 
-    return file.text();
+    const name = (file.name || "").toLowerCase();
+    const isPdf = name.endsWith('.pdf') || file.type === 'application/pdf';
+    if (!isPdf) {
+      return file.text();
+    }
+
+    // Try to use pdfjs in the extension (local vendor) or CDN as a fallback.
+    async function loadPdfJs() {
+      // Try local vendor path inside the extension first
+      try {
+        if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.getURL) {
+          const localUrl = chrome.runtime.getURL('src/vendor/pdf.mjs');
+          try {
+            const mod = await import(localUrl);
+            console.debug('resumeParser: loaded pdfjs from', localUrl);
+            return mod.default || mod;
+          } catch (inner) {
+            console.warn('resumeParser: failed to import local pdfjs module', inner);
+          }
+        }
+      } catch (e) {
+        console.warn('resumeParser: chrome.runtime not available or error getting URL', e);
+      }
+
+      // Try CDN as a last resort (may be blocked by CSP in some extension environments)
+      try {
+        // Use a CDN version that corresponds to the packaged legacy build when possible.
+        const cdn = 'https://unpkg.com/pdfjs-dist@6.2.108/legacy/build/pdf.mjs';
+        const mod = await import(cdn);
+        console.debug('resumeParser: loaded pdfjs from CDN', cdn);
+        return mod.default || mod;
+      } catch (e) {
+        console.warn('resumeParser: failed to import pdfjs from CDN', e);
+        return null;
+      }
+    }
+
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      const pdfjsLib = await loadPdfJs();
+      if (!pdfjsLib) {
+        // pdfjs not available in this environment; fall back to file.text()
+        return file.text();
+      }
+
+      const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer, disableWorker: true });
+      const pdf = await loadingTask.promise;
+      let text = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        // Some pdfjs versions return a promise for getPage
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        const items = content && content.items ? content.items : [];
+        text += items.map((item) => item.str).join(' ') + '\n\n';
+      }
+
+      return String(text).trim();
+    } catch (e) {
+      try {
+        return await file.text();
+      } catch (e2) {
+        return '';
+      }
+    }
   }
 
   namespace.resumeParser = {

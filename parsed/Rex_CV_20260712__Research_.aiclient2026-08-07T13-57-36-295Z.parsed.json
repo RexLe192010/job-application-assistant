@@ -3,42 +3,38 @@
     "full_name": "Xinyi (Rex) Le",
     "email": "rexle192010@gmail.com",
     "phone": "+1 346-541-6204",
+    "summary": null,
     "linkedin": "linkedin.com/in/xinyi-le-169039264",
-    "github": "github.com/RexLe192010",
-    "summary": ""
+    "github": "github.com/RexLe192010"
   },
   "education": [
     {
       "institution": "Georgia Institute of Technology",
-      "location": "Atlanta, GA",
       "degree": "Doctor of Philosophy in Computer Science",
-      "dates": "Aug 2026 – May 2031 (Expected)"
+      "start_date": "Aug 2026",
+      "end_date": "May 2031 (Expected)"
     },
     {
       "institution": "Rice University",
-      "location": "Houston, TX",
       "degree": "Bachelor of Science in Computer Science, Bachelor of Arts in Mathematics",
-      "dates": "Aug 2022 – May 2026",
-      "coursework": "Logic and CS and AI, Natural Language Processing, Deep Learning Systems, Compilers, Real/Complex Analysis, Abstract Algebra, Integration Theory"
+      "start_date": "Aug 2022",
+      "end_date": "May 2026"
     }
   ],
   "publications": [
     {
       "title": "Reviving DSP for Advanced Theorem Proving in the Era of Reasoning Models",
       "venue": "NeurIPS 2025 (Poster)",
-      "bullets": [
-        "Built a REPL-based pipeline enabling LLM–Lean 4 interaction for proof repair and library refinement, extended to the DSP+ framework for end-to-end neuro-symbolic theorem proving."
-      ]
+      "description": "Built a REPL-based pipeline enabling LLM–Lean 4 interaction for proof repair and library refinement, extended to the DSP+ framework for end-to-end neuro-symbolic theorem proving."
     }
   ],
   "main_experience": [
     {
       "title": "Research Intern",
       "organization": "Harvard John A. Paulson School of Engineering and Applied Sciences",
-      "location": "Boston, MA",
-      "dates": "May 2025 – Aug 2025",
+      "start_date": "May 2025",
+      "end_date": "Aug 2025",
       "bullets": [
-        "Code can be found here: Library-learning link.",
         "Conducted research on the Simply Typed Lambda Calculus and semantic reasoning with Language Models.",
         "Constructed a Python-OCaml Foreign Function Interface (FFI) with intermediate C-stubs to integrate a parser and type-checker, that further supports extraction of libraries of definitions for a library learning environment.",
         "Implemented and test an in-memory LRU cache for a Transformer model using Jax and Equinox that supports both retrieval and insertion/update operations."
@@ -47,8 +43,8 @@
     {
       "title": "Research Intern",
       "organization": "Microsoft Research Asia",
-      "location": "Beijing, China",
-      "dates": "May 2024 – Jan 2025",
+      "start_date": "May 2024",
+      "end_date": "Jan 2025",
       "bullets": [
         "Investigated the integration of large language models with formal proof assistants to develop neuro-symbolic systems for automated theorem proving.",
         "Constructed an experimental curriculum-learning pipeline, adopting a human-like chapter-by-chapter strategy of pre- and post-learning and Lean 4 library generation.",
@@ -60,8 +56,8 @@
     {
       "title": "Research Assistant",
       "organization": "Department of Statistics, Rice University",
-      "location": "Houston, TX",
-      "dates": "May 2024 – Jan 2025",
+      "start_date": "May 2024",
+      "end_date": "Jan 2025",
       "bullets": [
         "Developed a fan-shape model to detect ventricular structures in echocardiographic images and generate corresponding segmentation masks.",
         "Processed and analyzed a large dataset of cardiac ultrasound videos to support model development and evaluation."
@@ -70,8 +66,8 @@
     {
       "title": "Research Intern",
       "organization": "Microsoft Research Asia",
-      "location": "Shanghai, China",
-      "dates": "May 2023 – Sep 2023",
+      "start_date": "May 2023",
+      "end_date": "Sep 2023",
       "bullets": [
         "Participated in research on in-context executing and tool-augmented reasoning of large language models.",
         "Designed and optimized system prompts for different LLMs, recording model outputs and labels in JSON/CSV formats; applied multi-threading to improve data labeling efficiency by over 200%.",
@@ -90,13 +86,9 @@
         "Google Cloud",
         "Bigtable"
       ],
-      "dates": "Jan 2025 - May 2025",
-      "bullets": [
-        "Implemented secure user authentication and session management using Firebase Auth and token-based verification in Spring Boot, ensuring encrypted credential handling and protected API endpoints.",
-        "Developed backend AuthService and integrated Firebase token validation across portfolio, transaction, and stock endpoints for multi-user data isolation and privacy.",
-        "Built the frontend login/signup flow in React, including real-time error handling, Google sign-in integration, and persistent session renewal with local storage and secure cookies.",
-        "Designed and tested session timeout and renewal mechanisms, improving user experience and maintaining compliance with web security best practices."
-      ]
+      "start_date": "Jan 2025",
+      "end_date": "May 2025",
+      "description": "Implemented secure user authentication and session management using Firebase Auth and token-based verification in Spring Boot, ensuring encrypted credential handling and protected API endpoints. Developed backend AuthService and integrated Firebase token validation across portfolio, transaction, and stock endpoints for multi-user data isolation and privacy. Built the frontend login/signup flow in React, including real-time error handling, Google sign-in integration, and persistent session renewal with local storage and secure cookies. Designed and tested session timeout and renewal mechanisms, improving user experience and maintaining compliance with web security best practices."
     },
     {
       "name": "ArticleHub",
@@ -109,14 +101,9 @@
         "Jest",
         "Jasmine"
       ],
-      "dates": "Aug 2024 – Dec 2024",
-      "bullets": [
-        "Code can be found here: ArticleHub link.",
-        "Built a full-stack article sharing platform supporting user registration, login, Google login (Passport.js), article posting, comments, and user following/unfollowing.",
-        "Integrated profile and avatar updates with Cloudinary.",
-        "Deployed the backend with Express on Heroku and the frontend using React and Surge.",
-        "Managed persistent user, article, profile data with MongoDB."
-      ]
+      "start_date": "Aug 2024",
+      "end_date": "Dec 2024",
+      "description": "Built a full-stack article sharing platform supporting user registration, login, Google login (Passport.js), article posting, comments, and user following/unfollowing. Integrated profile and avatar updates with Cloudinary. Deployed the backend with Express on Heroku and the frontend using React and Surge. Managed persistent user, article, profile data with MongoDB."
     },
     {
       "name": "OwlDB/M3ssag1n8",
@@ -126,13 +113,9 @@
         "TypeScript",
         "Cypress"
       ],
-      "dates": "Aug 2024 – Dec 2024",
-      "bullets": [
-        "Built a network accessible NoSQL database using RESTful web service in a three-member team. (OwlDB)",
-        "Implemented concurrent skip lists with lazy synchronization and atomics for efficient upserting and querying.",
-        "Supported real-time updates via server-sent events (SSE) for subscriptions to documents and collections.",
-        "Built a web-based messaging application using OwlDB as the backend web service, enabling users to create, view, and manage workspaces, channels, and posts. (M3ssag1n8)"
-      ]
+      "start_date": "Aug 2024",
+      "end_date": "Dec 2024",
+      "description": "Built a network accessible NoSQL database using RESTful web service in a three-member team. (OwlDB) Implemented concurrent skip lists with lazy synchronization and atomics for efficient upserting and querying. Supported real-time updates via server-sent events (SSE) for subscriptions to documents and collections. Built a web-based messaging application using OwlDB as the backend web service, enabling users to create, view, and manage workspaces, channels, and posts. (M3ssag1n8)"
     },
     {
       "name": "REMM Loan",
@@ -143,69 +126,24 @@
         "Scikit-learn",
         "Cross-validation"
       ],
-      "dates": "Sep 2023",
-      "bullets": [
-        "DevPost Website: REMM Loan link",
-        "Implemented a financial application to estimate a person’s loan eligibility in a four-member team.",
-        "Trained a Standard Random Forest model on 14 features from 2022 FFIEC Loan/Application Records, achieving 89% accuracy through cross-validation."
-      ]
+      "start_date": "Sep 2023",
+      "end_date": null,
+      "description": "Implemented a financial application to estimate a person’s loan eligibility in a four-member team. Trained a Standard Random Forest model on 14 features from 2022 FFIEC Loan/Application Records, achieving 89% accuracy through cross-validation."
     }
   ],
-  "technical_skills": {
-    "Languages": [
-      "Python",
-      "Java",
-      "Lean 4",
-      "Go",
-      "R",
-      "C",
-      "SQL (Postgres)",
-      "HTML/CSS",
-      "JavaScript",
-      "Haskell",
-      "OCaml"
-    ],
-    "Frameworks": [
-      "React",
-      "Node.js",
-      "Spring Boot",
-      "JUnit",
-      "Express",
-      "Jest",
-      "Jasmine"
-    ],
-    "Developer Tools": [
-      "Git",
-      "VS Code",
-      "PyCharm",
-      "IntelliJ",
-      "RStudio",
-      "Heroku",
-      "Microsoft Azure",
-      "Google Cloud"
-    ],
-    "Databases": [
-      "MongoDB",
-      "Neo4j",
-      "Firebase"
-    ],
-    "Libraries": [
-      "OpenAI",
-      "Pandas",
-      "NumPy",
-      "Matplotlib",
-      "Scikit-learn",
-      "JSON/JSONLines",
-      "OpenCV",
-      "Mongoose"
-    ]
-  },
+  "technical_skills": [
+    "Languages: Python, Java, Lean 4, Go, R, C, SQL (Postgres), HTML/CSS, JavaScript, Haskell, OCaml",
+    "Frameworks: React, Node.js, Spring Boot, JUnit, Express, Jest, Jasmine",
+    "Developer Tools: Git, VS Code, PyCharm, IntelliJ, RStudio, Heroku, Microsoft Azure, Google Cloud",
+    "Databases: MongoDB, Neo4j, Firebase",
+    "Libraries: OpenAI, Pandas, NumPy, Matplotlib, Scikit-learn, JSON/JSONLines, OpenCV, Mongoose"
+  ],
   "teaching_experience": [
     {
-      "title": "Teaching Assistant",
-      "course": "COMP431: Web Development",
+      "title": "Teaching Assistant, COMP431: Web Development",
       "organization": "Rice University",
-      "dates": "Aug 2025 – Dec 2025",
+      "start_date": "Aug 2025",
+      "end_date": "Dec 2025",
       "bullets": [
         "Collaborated with instructors and fellow TAs in weekly meetings to refine grading rubrics, ensure consistency across 7 web development assignments, and uphold best practices in full-stack design and testing.",
         "Held weekly office hours for a class of 60+ students, providing guidance on React component architecture, state management, and asynchronous data flow with RESTful APIs.",
@@ -214,10 +152,10 @@
       ]
     },
     {
-      "title": "Teaching Assistant",
-      "course": "COMP 440: Artificial Intelligence",
+      "title": "Teaching Assistant, COMP 440: Artificial Intelligence",
       "organization": "Rice University",
-      "dates": "Jan 2026 – May 2026",
+      "start_date": "Jan 2026",
+      "end_date": "May 2026",
       "bullets": [
         "Lead weekly recitation sessions for a class of 80+ students, walking students through assignment solutions and core reasoning frameworks including search, adversarial reasoning, MDPs, CSPs, probabilistic models, and machine learning.",
         "Hold weekly office hours to answer conceptual questions and debug implementations, helping students clarify modeling assumptions and reasoning steps.",
@@ -227,32 +165,32 @@
   ],
   "honors_and_awards": [
     {
-      "title": "Successful Participant",
+      "name": "Successful Participant",
       "date": "Apr 2025",
       "organization": "The Mathematical Contest in Modeling 2025"
     },
     {
-      "title": "President’s Honor Roll",
+      "name": "President’s Honor Roll",
       "date": "Spring 2025, Spring 2023",
       "organization": "Rice University"
     },
     {
-      "title": "National Gold (Division 2)",
+      "name": "National Gold (Division 2)",
       "date": "Mar 2021",
       "organization": "35th Annual AAPT Physics Bowl Contest"
     },
     {
-      "title": "Silver Medal Award in Energy & Environment, final round",
+      "name": "Silver Medal Award in Energy & Environment, final round",
       "date": "Oct 2020 - Mar 2021",
       "organization": "2020-2021 Conrad Challenge, China FINALS"
     },
     {
-      "title": "Certificate of Participation",
+      "name": "Certificate of Participation",
       "date": "Mar 2021",
       "organization": "AIME (American Invitational Mathematics Examination)"
     },
     {
-      "title": "Gold (Global Ranking)",
+      "name": "Gold (Global Ranking)",
       "date": "Nov 2020",
       "organization": "British Physics Olympiad (BPhO) Round 1, 2020–2021"
     }
@@ -261,9 +199,9 @@
     {
       "title": "Content Creator",
       "organization": "Bilibili / Youtube",
-      "dates": "Aug 2021 – Present",
+      "start_date": "Aug 2021",
+      "end_date": "Present",
       "bullets": [
-        "Bilibili personal space: Bilibili. Youtube personal channel: Youtube.",
         "Analyzed Minecraft mods/modpacks, and other web-based game systems through mathematical modeling (exponential/logarithmic growth, resource optimization) and Java code inspection. Produced hundreds of commentary and strategy videos that explain in-game mechanics, derive optimal play strategies, and help players achieve efficient and enjoyable gameplay.",
         "Edited videos using timeline management, keyframing, beat-matching, transitions, captions, and script planning to deliver clear and engaging content.",
         "Established an online community through group chats, fostering player interaction, strategy discussions, and gameplay collaboration. Gained more than 1M cumulative views and 3K followers."
@@ -272,7 +210,8 @@
     {
       "title": "Family Tutor",
       "organization": "Home",
-      "dates": "Aug 2015 – Present",
+      "start_date": "Aug 2015",
+      "end_date": "Present",
       "bullets": [
         "Conducted weekly one-on-one teaching sessions for my middle school-aged younger sister, focusing on mathematics, foundational physics, and STEM concepts.",
         "Incorporated diverse activities, including Sudoku and logic puzzles, to actively stimulate critical thinking, strategic planning, and abstract problem-solving skills.",
@@ -282,7 +221,8 @@
     {
       "title": "Piano",
       "organization": "Anywhere",
-      "dates": "Aug 2011 – Present",
+      "start_date": "Aug 2011",
+      "end_date": "Present",
       "bullets": [
         "Achieved the highest amateur level (Grade 10, Shanghai Conservatory of Music)."
       ]

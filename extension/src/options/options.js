@@ -2,8 +2,11 @@
   const form = document.getElementById("kbForm");
   const aiForm = document.getElementById("aiForm");
   const resumeFileInput = document.getElementById("resumeFile");
+  const parsedFileInput = document.getElementById("parsedFile");
   const analyzeResumeBtn = document.getElementById("analyzeResumeBtn");
   const clearResumeBtn = document.getElementById("clearResumeBtn");
+  const loadParsedBtn = document.getElementById("loadParsedBtn");
+  const importParsedBtn = document.getElementById("importParsedBtn");
   const refreshModelsBtn = document.getElementById("refreshModelsBtn");
   const statusEl = document.getElementById("status");
   const resumeStatusEl = document.getElementById("resumeStatus");
@@ -77,6 +80,16 @@
       setResumeStatus(`Imported ${profile.sourceFile.name} with ${profile.resumeChunks.length} chunks.`);
     } else {
       setResumeStatus("No resume uploaded yet.");
+    }
+  }
+
+  function showParsedJsonPreview(obj) {
+    const el = document.getElementById('parsedJsonText');
+    if (!el) return;
+    try {
+      el.textContent = JSON.stringify(obj, null, 2);
+    } catch (e) {
+      el.textContent = String(obj || '');
     }
   }
 
@@ -205,6 +218,51 @@
     }
   });
 
+  // Preview parsed JSON file (local file produced by test pipeline)
+  loadParsedBtn.addEventListener('click', async () => {
+    const file = parsedFileInput.files && parsedFileInput.files[0];
+    if (!file) {
+      setStatus('Choose a parsed JSON file first.');
+      return;
+    }
+    try {
+      const text = await file.text();
+      const obj = JSON.parse(text);
+      showParsedJsonPreview(obj);
+      setStatus('Parsed JSON preview loaded.');
+    } catch (err) {
+      setStatus(`Failed to load JSON: ${err.message}`);
+    }
+  });
+
+  // Import parsed JSON into resumeProfile and storage
+  importParsedBtn.addEventListener('click', async () => {
+    const file = parsedFileInput.files && parsedFileInput.files[0];
+    if (!file) {
+      setStatus('Choose a parsed JSON file first.');
+      return;
+    }
+    try {
+      const text = await file.text();
+      const obj = JSON.parse(text);
+      // Basic shape: if obj.personal exists, wrap into profile; otherwise assume it's a profile
+      const profile = obj.personal ? obj : { personal: obj };
+      // Add metadata so preview renders
+      profile.sourceFile = { name: file.name };
+      profile.resumeChunks = Array.isArray(profile.resumeChunks) ? profile.resumeChunks : [];
+      profile.structuredFields = profile.personal || {};
+      profile.extractedAt = new Date().toISOString();
+      await storage.setResumeProfile(profile);
+      await storage.mergeKnowledgeBaseFromFields(profile.structuredFields, false);
+      await loadKnowledgeBase();
+      await refreshResumePreview();
+      showParsedJsonPreview(obj);
+      setStatus('Parsed JSON imported into resume profile.');
+    } catch (err) {
+      setStatus(`Import failed: ${err.message}`);
+    }
+  });
+
   clearResumeBtn.addEventListener("click", async () => {
     try {
       await storage.clearResumeProfile();
@@ -241,6 +299,19 @@
       setModelStatus(`Model load failed: ${error.message}`);
     }
   });
+
+  // Open profile editor page
+  const openProfileEditorBtn = document.getElementById('openProfileEditorBtn');
+  if (openProfileEditorBtn) {
+    openProfileEditorBtn.addEventListener('click', () => {
+      try {
+        const url = chrome.runtime.getURL('src/options/profile-editor.html');
+        window.open(url, '_blank');
+      } catch (e) {
+        setStatus('Unable to open profile editor: ' + e.message);
+      }
+    });
+  }
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();

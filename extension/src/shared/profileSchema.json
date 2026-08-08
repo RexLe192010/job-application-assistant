@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Job Application Profile",
+  "type": "object",
+  "properties": {
+    "personal": {"type": "object"},
+    "contact": {"type": "object"},
+    "links": {"type": "object"},
+    "education": {"type": "array", "items": {"type": "object"}},
+    "experience": {"type": "array", "items": {"type": "object"}},
+    "projects": {"type": "array", "items": {"type": "object"}},
+    "skills": {"type": "object"},
+    "publications": {"type": "array", "items": {"type": "object"}},
+    "awards": {"type": "array", "items": {"type": "object"}},
+    "certifications": {"type": "array", "items": {"type": "object"}},
+    "languages": {"type": "array", "items": {"type": "object"}},
+    "work_authorization": {"type": "object"},
+    "preferences": {"type": "object"}
+  },
+  "additionalProperties": true
+}
